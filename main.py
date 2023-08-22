@@ -1,23 +1,7 @@
-import sqlite3
+from backend import create_account, delete_account, add_balance, withdraw
 
-conn = sqlite3.connect('bankData.db')
-cur = conn.cursor()
+# create_account("Shubham", 4565461238, 20)
 
-print("Connection successful")
+withdraw(1, 69696966900)
 
-query1 = """
-CREATE TABLE IF NOT EXISTS accounts (
-    accountNo INT PRIMARY KEY,
-    name VARCHAR,
-    balance FLOAT,
-    phoneNo INT,
-    age INT
-);
-"""
-
-cur.execute(query1)
-
-print("Table created")
-
-conn.close()
-
+# delete_account(3)
