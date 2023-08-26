@@ -39,4 +39,22 @@ def withdraw(accountNo, amount):
         conn.commit()
         print(f"Withdrew {amount} from account {accountNo}")
 
+def change_accountNo(old_accountNo, new_accountNo):
+    query= "select accountNo from accounts;"
+    cur.execute(query)
+    accountNos= cur.fetchall()
+    accountNos = [acc[0] for acc in accountNos]
+    print("The taken account nos are: ", accountNos)
+
+    if new_accountNo not in accountNos:
+        values = (new_accountNo, old_accountNo)
+        query1 = "UPDATE accounts SET accountNo = ? WHERE accountNo = ?;"
+        cur.execute(query1, values)
+        conn.commit()
+        print(f"update accountNo from {old_accountNo} to {new_accountNo}")
+    else:
+        print("Check, account No already taken.")
+
+
+
 
